@@ -33,18 +33,11 @@
             Counter++;
         }
 
-        public static double Distance(Point p1, Point p2)
+        public static double Distance(Point a, Point b)
         {
-            return Math.Sqrt(Math.Pow(p2.X - p1.Y, 2) +
-                             Math.Pow(p2.Y - p1.Y, 2) +
-                             Math.Pow(p2.Z - p1.Z, 2));
+            return Math.Sqrt(Math.Pow(b.X - a.X, 2) +
+                             Math.Pow(b.Y - a.Y, 2) +
+                             Math.Pow(b.Z - a.Z, 2));
         }
-
-        //public double Distance(Point other)
-        //{
-        //    return Math.Sqrt(Math.Pow(other.X - this.X, 2) +
-        //                     Math.Pow(other.Y - this.Y, 2) +
-        //                     Math.Pow(other.Z - this.Z, 2));
-        //}
     }
 }

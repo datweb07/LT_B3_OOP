@@ -8,17 +8,68 @@ namespace LT_B3_OOP
         {
             Console.Clear();
             Console.OutputEncoding = Encoding.UTF8;
-            
-            Point p1 = new Point(1, 2, 3);
-            Point p2 = new Point(4, 5, 6);
-            Console.WriteLine($"Distance: {Point.Distance(p1, p2)}");
-
-
             List<Point> points = Triangle.Generate();
-            Console.WriteLine($"Total Points Created: {Point.Counter}");
-            Random random = new Random();
 
-            
+            Console.WriteLine($"Số lượng Point được tạo ra: {Point.Counter}");
+            for (int i = 0; i < points.Count; i++)
+            {
+                Console.WriteLine($"Điểm [{i + 1}]: ({points[i].X}, {points[i].Y}, {points[i].Z})");
+            }
+
+            if (Point.Counter < 3)
+            {
+                Console.WriteLine("Không đủ điểm để tạo tam giác.");
+                return;
+            }
+
+            Random random = new Random();
+            Point[] threePoints = new Point[3];
+            int[] index = new int[3];
+            int count = 0;
+
+            while (count < 3)
+            {
+                int randomIndex = random.Next(points.Count);
+                bool duplicate = false;
+                for (int i = 0; i < count; i++)
+                {
+                    if (index[i] == randomIndex)
+                    {
+                        duplicate = true;
+                        break;
+                    }
+                }
+                if (!duplicate)
+                {
+                    index[count] = randomIndex;
+                    threePoints[count] = points[randomIndex];
+                    count++;
+                }
+            }
+
+            Console.WriteLine("\n");
+            Console.WriteLine("3 điểm được chọn ngẫu nhiên:");
+            for (int i = 0; i < threePoints.Length; i++)
+            {
+                Console.WriteLine($"Điểm [{index[i] + 1}]: ({threePoints[i].X}, {threePoints[i].Y}, {threePoints[i].Z})");
+            }
+            Console.WriteLine("--------------------------------\n");
+
+            // Tạo tam giác từ 3 điểm đã chọn
+            Triangle triangle = new Triangle(threePoints[0], threePoints[1], threePoints[2]);
+
+            Console.WriteLine($"Chu vi tam giác: {triangle.Circumference()}");
+            Console.WriteLine($"Diện tích tam giác: {triangle.Area()}");
+            triangle.Angle();
+            Console.WriteLine("--------------------------------\n");
+            Console.WriteLine($"Góc tại [{index[0] + 1}] được tạo bởi [{index[1] + 1}] và [{index[2] + 1}]: {triangle.Angle(threePoints[0], threePoints[1], threePoints[2])}");
+            Console.WriteLine($"Góc tại [{index[1] + 1}] được tạo bởi [{index[0] + 1}] và [{index[2] + 1}]: {triangle.Angle(threePoints[1], threePoints[0], threePoints[2])}");
+            Console.WriteLine($"Góc tại [{index[2] + 1}] được tạo bởi [{index[0] + 1}] và [{index[1] + 1}]: {triangle.Angle(threePoints[2], threePoints[0], threePoints[1])}");
+
+            Console.WriteLine("Độ dài các cạnh của tam giác:");
+            Console.WriteLine($"Độ dài cạnh AB [{index[0] + 1}] - [{index[1] + 1}]: {Point.Distance(threePoints[0], threePoints[1])}");
+            Console.WriteLine($"Độ dài cạnh BC [{index[0] + 1}] - [{index[2] + 1}]: {Point.Distance(threePoints[1], threePoints[2])}");
+            Console.WriteLine($"Độ dài cạnh CA [{index[1] + 1}] - [{index[2] + 1}]: {Point.Distance(threePoints[2], threePoints[0])}");
 
             Console.ReadKey();
         }
