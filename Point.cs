@@ -35,9 +35,7 @@
 
         public static double Distance(Point a, Point b)
         {
-            return Math.Sqrt(Math.Pow(b.X - a.X, 2) +
-                             Math.Pow(b.Y - a.Y, 2) +
-                             Math.Pow(b.Z - a.Z, 2));
+            return Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2) + Math.Pow(b.Z - a.Z, 2));
         }
     }
 }

@@ -58,13 +58,10 @@ namespace LT_B3_OOP
             // Tạo tam giác từ 3 điểm đã chọn
             Triangle triangle = new Triangle(threePoints[0], threePoints[1], threePoints[2]);
 
-            Console.WriteLine($"Chu vi tam giác: {triangle.Circumference()}");
-            Console.WriteLine($"Diện tích tam giác: {triangle.Area()}");
+            Console.WriteLine($"Chu vi tam giác: {triangle.ChuVi()}");
+            Console.WriteLine($"Diện tích tam giác: {triangle.DienTich()}");
             triangle.Angle();
             Console.WriteLine("--------------------------------\n");
-            Console.WriteLine($"Góc tại [{index[0] + 1}] được tạo bởi [{index[1] + 1}] và [{index[2] + 1}]: {triangle.Angle(threePoints[0], threePoints[1], threePoints[2])}");
-            Console.WriteLine($"Góc tại [{index[1] + 1}] được tạo bởi [{index[0] + 1}] và [{index[2] + 1}]: {triangle.Angle(threePoints[1], threePoints[0], threePoints[2])}");
-            Console.WriteLine($"Góc tại [{index[2] + 1}] được tạo bởi [{index[0] + 1}] và [{index[1] + 1}]: {triangle.Angle(threePoints[2], threePoints[0], threePoints[1])}");
 
             Console.WriteLine("Độ dài các cạnh của tam giác:");
             Console.WriteLine($"Độ dài cạnh AB [{index[0] + 1}] - [{index[1] + 1}]: {Point.Distance(threePoints[0], threePoints[1])}");
