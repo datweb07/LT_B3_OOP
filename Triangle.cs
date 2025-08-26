@@ -17,26 +17,13 @@
         {
             List<Point> points = new List<Point>();
             Random rand = new Random();
-
-            //for (int i = 0; i < 50; i++)
-            //{
-            //    //bool a = (rand.Next(2) == 1);  // return true of false random
-            //    //if (a == true)
-            //    //{
-            //    //    float x = rand.Next(-10,10);
-            //    //    float y = rand.Next(-10, 10);
-            //    //    float z = rand.Next(-10, 10);
-            //    //    points.Add(new Point(x, y, z));
-            //    //}
-            //}
-            bool createPoint = true;
             for (int i = 0; i < 50; i++)
             {
                 int random = rand.Next(0, 2);
 
                 if (random == 0)
                 {
-                    createPoint = false;
+                    continue;
                 }
                 else
                 {
@@ -44,7 +31,6 @@
                     float y = rand.Next(-10, 10);
                     float z = rand.Next(-10, 10);
                     points.Add(new Point(x, y, z));
-                    createPoint = true;
                 }
             }
             return points;
