@@ -22,6 +22,8 @@ namespace LT_B3_OOP
                 return;
             }
 
+            
+
             Random random = new Random();
             Point[] threePoints = new Point[3];
             int[] index = new int[3];
@@ -55,18 +57,26 @@ namespace LT_B3_OOP
             }
             Console.WriteLine("--------------------------------\n");
 
-            // Tạo tam giác từ 3 điểm đã chọn
-            Triangle triangle = new Triangle(threePoints[0], threePoints[1], threePoints[2]);
+            // Tạo tam giác từ 3 điểm đã chọn nếu hợp lệ
+            if (Triangle.IsValidTriangle(threePoints[0], threePoints[1], threePoints[2]))
+            {
+                Triangle triangle = new Triangle(threePoints[0], threePoints[1], threePoints[2]);
+                Console.WriteLine("Ba điểm tạo thành một tam giác hợp lệ.");
+                Console.WriteLine(triangle.IsValid());
+                Console.WriteLine($"Chu vi tam giác: {triangle.ChuVi()}");
+                Console.WriteLine($"Diện tích tam giác: {triangle.DienTich()}");
+                triangle.Angle();
+                Console.WriteLine("--------------------------------\n");
 
-            Console.WriteLine($"Chu vi tam giác: {triangle.ChuVi()}");
-            Console.WriteLine($"Diện tích tam giác: {triangle.DienTich()}");
-            triangle.Angle();
-            Console.WriteLine("--------------------------------\n");
-
-            Console.WriteLine("Độ dài các cạnh của tam giác:");
-            Console.WriteLine($"Độ dài cạnh AB [{index[0] + 1}] - [{index[1] + 1}]: {Point.Distance(threePoints[0], threePoints[1])}");
-            Console.WriteLine($"Độ dài cạnh BC [{index[0] + 1}] - [{index[2] + 1}]: {Point.Distance(threePoints[1], threePoints[2])}");
-            Console.WriteLine($"Độ dài cạnh CA [{index[1] + 1}] - [{index[2] + 1}]: {Point.Distance(threePoints[2], threePoints[0])}");
+                Console.WriteLine("Độ dài các cạnh của tam giác:");
+                Console.WriteLine($"Độ dài cạnh AB [{index[0] + 1}] - [{index[1] + 1}]: {Point.Distance(threePoints[0], threePoints[1])}");
+                Console.WriteLine($"Độ dài cạnh BC [{index[1] + 1}] - [{index[2] + 1}]: {Point.Distance(threePoints[1], threePoints[2])}");
+                Console.WriteLine($"Độ dài cạnh CA [{index[2] + 1}] - [{index[0] + 1}]: {Point.Distance(threePoints[2], threePoints[0])}");
+            }
+            else
+            {
+                Console.WriteLine("Ba điểm được chọn không tạo thành một tam giác hợp lệ.");
+            }
 
             Console.ReadKey();
         }
